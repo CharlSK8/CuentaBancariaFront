@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title>SofkaBankLogin</title>
+</head>
+<body>
+    <div class="login-from">
+        <h1>Login SofkaBank</h1>
+        <div class="container">
+            <div class="main">
+                <div class="content">
+                    <h2>Inicio de sesión</h2>
+                    <% if (typeof error !== 'undefined' && error) { %>
+                        <div class="error-message">
+                            <p><%= error %></p>
+                        </div>
+                    <% } %>
+                    <form id="loginForm" action="/auth/login" method="post">
+                        <input type="email" placeholder="Correo" name="email" required autofocus="">
+                        <input type="password" placeholder="Contraseña" name="password" required autofocus="">
+                        <button class="btn" type="submit">Iniciar sesión</button>
+                        <div class="loader">
+                            <span class="loader-text">Cargando</span>
+                                <span class="load"></span>
+                        </div>
+                    </form>
+                    <p class="account">¿No tienes una cuenta? <a href="/register">Registrate</a></p>
+                </div>
+                <div class="form img">
+                    <img src="/SofkaBank.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
