@@ -1,0 +1,29 @@
+{
+  "name": "gestiondeusuarios",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.7.9",
+    "bcryptjs": "^2.4.3",
+    "cookie-parse": "^0.4.0",
+    "dotenv": "^16.4.7",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "gestiondeusuarios": "file:",
+    "jsonwebtoken": "^9.0.2",
+    "mime": "^4.0.6",
+    "redux-devtools-extension": "^2.13.9",
+    "sweetalert2": "^11.15.10"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
