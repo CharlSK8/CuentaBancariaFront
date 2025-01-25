@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Usuario</title>
+    <link rel="stylesheet" href="/profile.css">
+</head>
+<body>
+    <div class="profile-container">
+        <div class="profile-header">
+            <div class="logout-button">
+                <button id="logout-btn">
+                    <img src="/logout.png" alt="Cerrar sesuión"> Cerrar sesión
+                </button>
+            </div>
+            <div class="profile-image">
+                <img src="/profile.png" alt="Foto de perfil">
+            </div>
+            <div class="profile-info">
+                <h2>Bienvenido a SofkaBank</h2>
+                <h1><%= login.nombre %></h1> <p><%= login.cargo %></p>
+            </div>
+        </div>
+        <div class="profile-details">
+            <div class="detail-item">
+                <a>Fecha de nacimiento:</a>
+                <span><%= login.fechaNacimiento %></span>
+            </div>
+            <div class="detail-item">
+                <a>Dirección:</a>
+                <span><%= login.direccion %></span>
+            </div>
+            <div class="detail-item">
+                <a>Correo electrónico:</a>
+                <span><%= login.email %></span>
+            </div>
+            <div class="detail-item">
+                <a>Teléfono:</a>
+                <span><%= login.telefono %></span>
+            </div>
+            </div>
+    </div>
+</body>
+<script>
+    window.onload = () => {
+        const token = '<%= login.token %>';
+        localStorage.setItem('jwt', token);
+    }
+    document.getElementById("logout-btn").addEventListener("click", async () => {
+        try {
+            const response = await fetch("/auth/logout", {
+                method: "POST",
+                headers: {
+                    "Authorization": `Bearer ${localStorage.getItem("jwt")}`,
+                    "Content-Type": "application/json",
+                },
+                credentials: "include",
+            });
+    
+            if (response.ok) {
+                localStorage.removeItem("jwt");
+                window.location.href = "/";
+            } else {
+                const error = await response.json();
+            }
+        } catch (err) {
+            console.error("Error al procesar el logout:", err);
+        }
+    });
+</script>
+</html>
